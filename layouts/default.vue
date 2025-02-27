@@ -2,7 +2,7 @@
   <div class="app-container">
     <header v-if="user" class="app-header">
       <div class="header-content">
-        <h1 class="app-title">Nuxt SSO App</h1>
+        <h1 class="app-title">You're Next Great App</h1>
         <div class="user-menu">
           <UserAvatar :user="user" :size="32" />
           <span>{{ user.email }}</span>
@@ -22,7 +22,7 @@
     </main>
     
     <footer class="app-footer">
-      <p>&copy; {{ new Date().getFullYear() }} Nuxt SSO App</p>
+      <p>&copy; {{ new Date().getFullYear() }} You're Next Great App</p>
       <p class="footer-links">
         <NuxtLink to="/debug" class="debug-link">Debug</NuxtLink>
       </p>
@@ -53,7 +53,7 @@ async function handleSignOut() {
 }
 
 .app-header {
-  background-color: #4f46e5;
+  background-color: #19747E; /* Deep teal */
   color: white;
   padding: 1rem;
 }
@@ -79,13 +79,13 @@ async function handleSignOut() {
 
 .sign-out-btn {
   max-width: 120px;
-  background-color: rgba(255, 255, 255, 0.2) !important;
+  background-color: rgba(209, 232, 226, 0.2) !important; /* Mint green with transparency */
   color: white !important;
   border: none !important;
 }
 
 .sign-out-btn:hover {
-  background-color: rgba(255, 255, 255, 0.3) !important;
+  background-color: rgba(209, 232, 226, 0.3) !important; /* Mint green with more opacity */
 }
 
 .app-main {
@@ -93,10 +93,10 @@ async function handleSignOut() {
 }
 
 .app-footer {
-  background-color: #f5f5f5;
+  background-color: #E2E2E2; /* Light gray */
   padding: 1rem;
   text-align: center;
-  color: #666;
+  color: #19747E; /* Deep teal */
 }
 
 .footer-links {
@@ -105,7 +105,7 @@ async function handleSignOut() {
 }
 
 .debug-link {
-  color: #999;
+  color: #19747E; /* Deep teal */
   text-decoration: none;
 }
 

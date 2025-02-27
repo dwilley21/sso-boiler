@@ -7,7 +7,7 @@
           <polyline points="22 4 12 14.01 9 11.01"></polyline>
         </svg>
       </div>
-      <h1>Welcome{{ user?.user_metadata?.full_name ? ', ' + user.user_metadata.full_name.split(' ')[0] : '' }}!</h1>
+      <h1>Welcome to You're Next Great App{{ user?.user_metadata?.full_name ? ', ' + user.user_metadata.full_name.split(' ')[0] : '' }}!</h1>
       <p>{{ message }}</p>
       <div class="user-info" v-if="user">
         <div v-if="userAvatar" class="user-avatar">
@@ -122,7 +122,7 @@ function goToHome() {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #E2E2E2; /* Light gray */
   padding: 20px;
 }
 
@@ -137,7 +137,7 @@ function goToHome() {
 }
 
 .success-icon {
-  color: #10b981;
+  color: #19747E; /* Deep teal */
   margin-bottom: 20px;
 }
 
@@ -164,11 +164,11 @@ function goToHome() {
 h1 {
   margin-top: 0;
   margin-bottom: 16px;
-  color: #333;
+  color: #19747E; /* Deep teal */
 }
 
 p {
-  color: #555;
+  color: #19747E; /* Deep teal */
   margin-bottom: 24px;
 }
 
@@ -178,7 +178,7 @@ p {
   justify-content: center;
   margin-bottom: 30px;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #D1E8E2; /* Mint green */
   border-radius: 8px;
 }
 
@@ -191,7 +191,7 @@ p {
 }
 
 .user-avatar.placeholder {
-  background-color: #4f46e5;
+  background-color: #19747E; /* Deep teal */
   color: white;
   display: flex;
   align-items: center;
@@ -210,13 +210,13 @@ p {
 
 .redirect-message {
   font-size: 14px;
-  color: #777;
+  color: #19747E; /* Deep teal */
   margin-bottom: 16px;
 }
 
 .debug-info {
-  background-color: #fff8e1;
-  border: 1px solid #ffe082;
+  background-color: #A9D6E5; /* Light sky blue */
+  border: 1px solid #19747E; /* Deep teal */
   border-radius: 4px;
   padding: 12px;
   margin-bottom: 20px;
@@ -225,6 +225,6 @@ p {
 
 .debug-info p {
   margin: 4px 0;
-  color: #b71c1c;
+  color: #19747E; /* Deep teal */
 }
 </style> 

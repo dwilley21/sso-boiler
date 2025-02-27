@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <div class="login-card">
-      <h1>Sign In</h1>
+      <h1>Sign In to You're Next Great App</h1>
       <p v-if="error" class="error">{{ error }}</p>
       
       <form @submit.prevent="handleEmailLogin">
@@ -96,7 +96,7 @@ function handleGoogleError(errorMessage) {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #E2E2E2; /* Light gray */
   padding: 20px;
 }
 
@@ -112,7 +112,7 @@ function handleGoogleError(errorMessage) {
 h1 {
   margin-top: 0;
   margin-bottom: 24px;
-  color: #333;
+  color: #19747E; /* Deep teal */
   text-align: center;
 }
 
@@ -124,20 +124,20 @@ label {
   display: block;
   margin-bottom: 8px;
   font-weight: 500;
-  color: #555;
+  color: #19747E; /* Deep teal */
 }
 
 input {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid #D1E8E2; /* Mint green */
   border-radius: 4px;
   font-size: 16px;
   transition: border-color 0.3s;
 }
 
 input:focus {
-  border-color: #4f46e5;
+  border-color: #19747E; /* Deep teal */
   outline: none;
 }
 
@@ -151,12 +151,12 @@ input:focus {
 .divider::after {
   content: "";
   flex: 1;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #D1E8E2; /* Mint green */
 }
 
 .divider span {
   padding: 0 10px;
-  color: #777;
+  color: #19747E; /* Deep teal */
   font-size: 14px;
 }
 
@@ -171,12 +171,13 @@ input:focus {
   margin-top: 24px;
   text-align: center;
   font-size: 14px;
-  color: #555;
+  color: #19747E; /* Deep teal */
 }
 
 .signup-link a {
-  color: #4f46e5;
+  color: #19747E; /* Deep teal */
   text-decoration: none;
+  font-weight: bold;
 }
 
 .signup-link a:hover {

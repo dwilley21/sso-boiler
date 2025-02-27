@@ -58,31 +58,31 @@ defineEmits(['click'])
 }
 
 .app-button--primary {
-  background-color: #4f46e5;
+  background-color: #19747E; /* Deep teal */
   color: white;
 }
 
 .app-button--primary:hover:not(:disabled) {
-  background-color: #4338ca;
+  background-color: #156570; /* Darker deep teal */
 }
 
 .app-button--secondary {
-  background-color: #e5e7eb;
-  color: #1f2937;
+  background-color: #A9D6E5; /* Light sky blue */
+  color: #19747E; /* Deep teal */
 }
 
 .app-button--secondary:hover:not(:disabled) {
-  background-color: #d1d5db;
+  background-color: #8ec7d9; /* Darker light sky blue */
 }
 
 .app-button--outline {
   background-color: transparent;
-  color: #4f46e5;
-  border: 1px solid #4f46e5;
+  color: #19747E; /* Deep teal */
+  border: 1px solid #19747E; /* Deep teal */
 }
 
 .app-button--outline:hover:not(:disabled) {
-  background-color: rgba(79, 70, 229, 0.05);
+  background-color: rgba(25, 116, 126, 0.05); /* Deep teal with transparency */
 }
 
 .app-button--google {
@@ -114,8 +114,8 @@ defineEmits(['click'])
 
 .app-button--outline .app-button__loader,
 .app-button--google .app-button__loader {
-  border: 2px solid rgba(79, 70, 229, 0.3);
-  border-top-color: #4f46e5;
+  border: 2px solid rgba(25, 116, 126, 0.3); /* Deep teal with transparency */
+  border-top-color: #19747E; /* Deep teal */
 }
 
 @keyframes spin {

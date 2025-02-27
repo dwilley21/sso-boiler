@@ -1,8 +1,8 @@
 <template>
   <div class="home-container">
     <div v-if="user" class="welcome-card">
-      <div class="grayscale-welcome">
-        <h1>Welcome to the App</h1>
+      <div class="mint-welcome">
+        <h1>Welcome to You're Next Great App</h1>
         <p class="welcome-message">We're glad to have you here, {{ user.user_metadata?.full_name || user.email || 'User' }}!</p>
       </div>
       <div class="user-info-section">
@@ -60,7 +60,7 @@ async function handleSignOut() {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #E2E2E2; /* Light gray */
   padding: 20px;
 }
 
@@ -73,26 +73,26 @@ async function handleSignOut() {
   max-width: 600px;
 }
 
-.grayscale-welcome {
-  background: linear-gradient(to bottom right, #333333, #555555);
-  color: white;
+.mint-welcome {
+  background: linear-gradient(to bottom right, #D1E8E2, #A9D6E5); /* Mint green to light sky blue */
+  color: #19747E; /* Deep teal */
   padding: 30px;
   border-radius: 8px;
   text-align: center;
   margin-bottom: 30px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.grayscale-welcome h1 {
+.mint-welcome h1 {
   margin-top: 0;
   margin-bottom: 16px;
-  color: white;
+  color: #19747E; /* Deep teal */
 }
 
 .welcome-message {
   font-size: 18px;
   margin-bottom: 0;
-  color: #e0e0e0;
+  color: #19747E; /* Deep teal */
 }
 
 .user-info-section {
@@ -100,7 +100,7 @@ async function handleSignOut() {
 }
 
 h2 {
-  color: #333;
+  color: #19747E; /* Deep teal */
   margin-bottom: 20px;
   text-align: center;
 }
@@ -109,7 +109,7 @@ h2 {
   display: flex;
   margin-bottom: 30px;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #D1E8E2; /* Mint green */
   border-radius: 8px;
 }
 
@@ -120,7 +120,7 @@ h2 {
 
 .user-details p {
   margin: 8px 0;
-  color: #555;
+  color: #19747E; /* Deep teal */
 }
 
 .loading {
