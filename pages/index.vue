@@ -146,6 +146,31 @@ async function handleEmailSignup() {
       return
     }
     
+    // Store the email locally as a backup
+    localStorage.setItem('signup_email', signupEmail.value)
+    localStorage.setItem('signup_time', new Date().toISOString())
+    
+    // Try to store the email in the database
+    try {
+      // Only include the email_address column - created_at will be handled by Supabase defaults
+      const { error: dbError } = await client
+        .from('Email-Leads')
+        .insert([
+          { 
+            email_address: signupEmail.value
+            // Note: id and created_at are handled automatically by Supabase
+          }
+        ])
+      
+      if (dbError) {
+        // Continue with signup even if database storage fails
+        console.error('Error storing email in database:', dbError.message)
+      }
+    } catch (dbErr) {
+      // Continue with signup even if database storage fails
+      console.error('Exception storing email in database:', dbErr)
+    }
+    
     // Generate a random password (will be changed later)
     const tempPassword = Math.random().toString(36).slice(-10) + Math.random().toString(36).slice(-10)
     
