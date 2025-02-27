@@ -32,14 +32,29 @@
         <div class="bg-gradient-to-br from-teal to-sky p-12 text-white text-center">
           <h1 class="text-4xl font-bold mb-4">Welcome to You're Next Great App</h1>
           <p class="text-xl mb-8">The easiest way to start your next project with authentication built-in</p>
-          <div class="flex justify-center gap-4">
-            <NuxtLink to="/login" class="bg-white text-teal hover:bg-mint px-6 py-3 rounded-lg font-medium transition-colors">
-              Sign In
-            </NuxtLink>
-            <NuxtLink to="/register" class="bg-transparent hover:bg-white/20 text-white border border-white px-6 py-3 rounded-lg font-medium transition-colors">
-              Create Account
-            </NuxtLink>
-          </div>
+          
+          <!-- Email signup form -->
+          <form @submit.prevent="handleEmailSignup" class="max-w-md mx-auto">
+            <div class="flex flex-col sm:flex-row gap-3">
+              <input 
+                v-model="signupEmail" 
+                type="email" 
+                placeholder="Enter your email" 
+                class="flex-1 py-3 px-4 rounded-lg text-teal focus:outline-none"
+                required
+              />
+              <button 
+                type="submit" 
+                class="bg-mint text-teal hover:bg-mint/90 py-3 px-6 rounded-lg font-medium transition-colors"
+                :disabled="signupLoading"
+              >
+                <span v-if="signupLoading" class="inline-block w-5 h-5 border-2 border-teal/30 border-t-teal rounded-full animate-spin mr-2"></span>
+                Get Started
+              </button>
+            </div>
+            <p v-if="signupError" class="mt-3 text-white bg-red-500/20 p-2 rounded text-sm">{{ signupError }}</p>
+            <p v-if="signupSuccess" class="mt-3 text-white bg-green-500/20 p-2 rounded text-sm">{{ signupSuccess }}</p>
+          </form>
         </div>
         
         <div class="p-10">
@@ -86,9 +101,9 @@
           </div>
           
           <div class="mt-10 text-center">
-            <p class="text-teal mb-4">Get started in seconds with our pre-built authentication flow</p>
-            <NuxtLink to="/login" class="btn btn-primary inline-block max-w-xs">
-              Sign In Now
+            <p class="text-teal mb-4">Already have an account?</p>
+            <NuxtLink to="/login" class="btn btn-outline inline-block max-w-xs">
+              Sign In to Your Account
             </NuxtLink>
           </div>
         </div>
@@ -102,6 +117,10 @@ const client = useSupabaseClient()
 const user = useSupabaseUser()
 const router = useRouter()
 const loading = ref(true)
+const signupEmail = ref('')
+const signupLoading = ref(false)
+const signupError = ref(null)
+const signupSuccess = ref(null)
 
 // Check authentication status
 onMounted(async () => {
@@ -115,6 +134,37 @@ onMounted(async () => {
   }
 })
 
+async function handleEmailSignup() {
+  try {
+    signupLoading.value = true
+    signupError.value = null
+    signupSuccess.value = null
+    
+    // Validate email
+    if (!signupEmail.value || !signupEmail.value.includes('@')) {
+      signupError.value = 'Please enter a valid email address'
+      return
+    }
+    
+    // Generate a random password (will be changed later)
+    const tempPassword = Math.random().toString(36).slice(-10) + Math.random().toString(36).slice(-10)
+    
+    const { error } = await client.auth.signUp({
+      email: signupEmail.value,
+      password: tempPassword,
+    })
+    
+    if (error) throw error
+    
+    signupSuccess.value = 'Success! Check your email to confirm your account.'
+    signupEmail.value = ''
+  } catch (err) {
+    signupError.value = err.message || 'An error occurred. Please try again.'
+  } finally {
+    signupLoading.value = false
+  }
+}
+
 function formatDate(dateString) {
   if (!dateString) return 'N/A'
   
@@ -125,7 +175,7 @@ function formatDate(dateString) {
 async function handleSignOut() {
   try {
     await client.auth.signOut()
-    router.push('/login')
+    router.push('/')
   } catch (error) {
     console.error('Error signing out:', error)
   }

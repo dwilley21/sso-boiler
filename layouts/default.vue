@@ -6,10 +6,10 @@
         <div class="flex items-center gap-4">
           <template v-if="user">
             <UserAvatar :user="user" :size="32" />
-            <span>{{ user.email }}</span>
+            <span class="hidden sm:inline">{{ user.email }}</span>
             <button 
               @click="handleSignOut"
-              class="max-w-[120px] bg-mint/20 hover:bg-mint/30 text-white border-none py-2 px-4 rounded transition-colors"
+              class="bg-mint/20 hover:bg-mint/30 text-white border-none py-2 px-4 rounded transition-colors"
             >
               Sign Out
             </button>
@@ -20,6 +20,12 @@
               class="bg-mint/20 hover:bg-mint/30 text-white border-none py-2 px-4 rounded transition-colors"
             >
               Sign In
+            </NuxtLink>
+            <NuxtLink 
+              to="/register" 
+              class="bg-white text-teal hover:bg-mint/90 border-none py-2 px-4 rounded transition-colors"
+            >
+              Create Account
             </NuxtLink>
           </template>
         </div>
@@ -47,7 +53,7 @@ const router = useRouter()
 async function handleSignOut() {
   try {
     await client.auth.signOut()
-    router.push('/login')
+    router.push('/')
   } catch (error) {
     console.error('Error signing out:', error)
   }
