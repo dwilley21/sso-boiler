@@ -1,55 +1,64 @@
 <template>
-  <div class="register-container">
-    <div class="register-card">
-      <h1>Create Account</h1>
-      <p v-if="error" class="error">{{ error }}</p>
-      <p v-if="success" class="success">{{ success }}</p>
+  <div class="flex justify-center items-center min-h-screen bg-lightgray p-5">
+    <div class="bg-white rounded-lg shadow-md p-10 w-full max-w-md">
+      <h1 class="text-2xl font-bold mb-6 text-teal text-center">Create Account</h1>
+      <p v-if="error" class="text-red-600 mb-4 text-center text-sm">{{ error }}</p>
+      <p v-if="success" class="text-green-600 mb-4 text-center text-sm">{{ success }}</p>
       
       <form @submit.prevent="handleRegister">
-        <div class="form-group">
-          <label for="email">Email</label>
+        <div class="mb-5">
+          <label for="email" class="form-label">Email</label>
           <input 
             id="email"
             v-model="email" 
             type="email" 
             placeholder="your@email.com" 
+            class="form-input"
             required
           />
         </div>
         
-        <div class="form-group">
-          <label for="password">Password</label>
+        <div class="mb-5">
+          <label for="password" class="form-label">Password</label>
           <input 
             id="password"
             v-model="password" 
             type="password" 
             placeholder="••••••••" 
+            class="form-input"
             required
           />
-          <p class="password-hint">Password must be at least 6 characters</p>
+          <p class="text-xs text-teal/70 mt-1">Password must be at least 6 characters</p>
         </div>
         
-        <div class="form-group">
-          <label for="confirmPassword">Confirm Password</label>
+        <div class="mb-5">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
           <input 
             id="confirmPassword"
             v-model="confirmPassword" 
             type="password" 
             placeholder="••••••••" 
+            class="form-input"
             required
           />
         </div>
         
-        <AppButton 
+        <button 
           type="submit" 
-          :loading="loading"
+          class="btn btn-primary relative"
+          :disabled="loading"
         >
-          Create Account
-        </AppButton>
+          <span v-if="loading" class="absolute inset-0 flex items-center justify-center">
+            <span class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+          </span>
+          <span :class="{ 'invisible': loading }">Create Account</span>
+        </button>
       </form>
       
-      <div class="divider">
-        <span>OR</span>
+      <div class="flex items-center my-6">
+        <div class="flex-1 border-b border-mint"></div>
+        <span class="px-3 text-teal text-sm">OR</span>
+        <div class="flex-1 border-b border-mint"></div>
       </div>
       
       <GoogleSignInButton 
@@ -57,8 +66,8 @@
         @error="handleGoogleError" 
       />
       
-      <p class="login-link">
-        Already have an account? <NuxtLink to="/login">Sign in</NuxtLink>
+      <p class="mt-6 text-center text-sm text-teal">
+        Already have an account? <NuxtLink to="/login" class="text-teal font-bold no-underline hover:underline">Sign in</NuxtLink>
       </p>
     </div>
   </div>
@@ -131,112 +140,4 @@ async function handleRegister() {
 function handleGoogleError(errorMessage) {
   error.value = errorMessage
 }
-</script>
-
-<style scoped>
-.register-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f5f5f5;
-  padding: 20px;
-}
-
-.register-card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 40px;
-  width: 100%;
-  max-width: 400px;
-}
-
-h1 {
-  margin-top: 0;
-  margin-bottom: 24px;
-  color: #333;
-  text-align: center;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
-  color: #555;
-}
-
-input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  transition: border-color 0.3s;
-}
-
-input:focus {
-  border-color: #4f46e5;
-  outline: none;
-}
-
-.password-hint {
-  font-size: 12px;
-  color: #777;
-  margin-top: 4px;
-  margin-bottom: 0;
-}
-
-.divider {
-  display: flex;
-  align-items: center;
-  margin: 24px 0;
-}
-
-.divider::before,
-.divider::after {
-  content: "";
-  flex: 1;
-  border-bottom: 1px solid #ddd;
-}
-
-.divider span {
-  padding: 0 10px;
-  color: #777;
-  font-size: 14px;
-}
-
-.error {
-  color: #e53e3e;
-  margin-bottom: 16px;
-  text-align: center;
-  font-size: 14px;
-}
-
-.success {
-  color: #38a169;
-  margin-bottom: 16px;
-  text-align: center;
-  font-size: 14px;
-}
-
-.login-link {
-  margin-top: 24px;
-  text-align: center;
-  font-size: 14px;
-  color: #555;
-}
-
-.login-link a {
-  color: #4f46e5;
-  text-decoration: none;
-}
-
-.login-link a:hover {
-  text-decoration: underline;
-}
-</style> 
+</script> 

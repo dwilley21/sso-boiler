@@ -1,17 +1,27 @@
 <template>
   <div class="flex flex-col min-h-screen">
-    <header v-if="user" class="bg-teal text-white py-4">
+    <header class="bg-teal text-white py-4">
       <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
         <h1 class="text-2xl font-normal m-0">You're Next Great App</h1>
         <div class="flex items-center gap-4">
-          <UserAvatar :user="user" :size="32" />
-          <span>{{ user.email }}</span>
-          <button 
-            @click="handleSignOut"
-            class="max-w-[120px] bg-mint/20 hover:bg-mint/30 text-white border-none py-2 px-4 rounded transition-colors"
-          >
-            Sign Out
-          </button>
+          <template v-if="user">
+            <UserAvatar :user="user" :size="32" />
+            <span>{{ user.email }}</span>
+            <button 
+              @click="handleSignOut"
+              class="max-w-[120px] bg-mint/20 hover:bg-mint/30 text-white border-none py-2 px-4 rounded transition-colors"
+            >
+              Sign Out
+            </button>
+          </template>
+          <template v-else>
+            <NuxtLink 
+              to="/login" 
+              class="bg-mint/20 hover:bg-mint/30 text-white border-none py-2 px-4 rounded transition-colors"
+            >
+              Sign In
+            </NuxtLink>
+          </template>
         </div>
       </div>
     </header>
