@@ -4,7 +4,10 @@ import { resolve } from 'path'
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/supabase'],
+  modules: [
+    '@nuxtjs/supabase',
+    '@nuxtjs/tailwindcss'
+  ],
   // Set server port to 3000
   app: {
     baseURL: '/',
@@ -21,9 +24,18 @@ export default defineNuxtConfig({
       ]
     }
   },
+  // Add CSS
+  css: ['~/assets/css/main.css'],
   // Configure dev server port
   devServer: {
     port: 3000
+  },
+  // Tailwind configuration
+  tailwindcss: {
+    cssPath: '~/assets/css/main.css',
+    configPath: 'tailwind.config.js',
+    exposeConfig: false,
+    viewer: false,
   },
   supabase: {
     redirectOptions: {
@@ -74,5 +86,5 @@ export default defineNuxtConfig({
         transformMixedEsModules: true
       }
     }
-  }
+  },
 })

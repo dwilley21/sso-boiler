@@ -1,15 +1,16 @@
 <template>
-  <div class="loading-container" :class="{ centered }">
+  <div :class="['flex flex-col items-center', { 'justify-center min-h-[200px]': centered }]">
     <div 
-      class="loading-spinner" 
+      class="border-4 border-gray-200 rounded-full animate-spin"
+      :class="{ 'border-t-teal': true }"
       :style="{ 
         width: `${size}px`, 
         height: `${size}px`,
-        borderWidth: `${size / 10}px`,
-        borderTopWidth: `${size / 10}px`
+        borderTopWidth: `${size / 10}px`,
+        borderWidth: `${size / 10}px`
       }"
     ></div>
-    <p v-if="message" class="loading-message">{{ message }}</p>
+    <p v-if="message" class="mt-4 text-teal text-center">{{ message }}</p>
   </div>
 </template>
 

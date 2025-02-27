@@ -1,12 +1,25 @@
 <template>
-  <div class="user-avatar">
+  <div class="inline-block">
     <img 
       v-if="avatarUrl" 
       :src="avatarUrl" 
       :alt="alt"
-      class="avatar-image"
+      class="rounded-full object-cover"
+      :style="{
+        width: `${size}px`,
+        height: `${size}px`
+      }"
     />
-    <div v-else class="avatar-placeholder" :style="{ backgroundColor: bgColor }">
+    <div 
+      v-else 
+      class="rounded-full text-white flex items-center justify-center font-bold"
+      :style="{ 
+        backgroundColor: bgColor,
+        width: `${size}px`,
+        height: `${size}px`,
+        fontSize: `${size / 2.5}px`
+      }"
+    >
       {{ initials }}
     </div>
   </div>
@@ -28,7 +41,7 @@ const props = defineProps({
   },
   bgColor: {
     type: String,
-    default: '#4f46e5'
+    default: '#19747E' // Deep teal
   }
 })
 

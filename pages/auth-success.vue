@@ -1,34 +1,34 @@
 <template>
-  <div class="success-container">
-    <div class="success-card">
-      <div class="success-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="checkmark-animation">
+  <div class="flex justify-center items-center min-h-screen bg-lightgray p-5">
+    <div class="bg-white rounded-lg shadow-md p-10 w-full max-w-xl text-center">
+      <div class="text-teal mb-5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animate-checkmark mx-auto">
           <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
           <polyline points="22 4 12 14.01 9 11.01"></polyline>
         </svg>
       </div>
-      <h1>Welcome to You're Next Great App{{ user?.user_metadata?.full_name ? ', ' + user.user_metadata.full_name.split(' ')[0] : '' }}!</h1>
-      <p>{{ message }}</p>
-      <div class="user-info" v-if="user">
-        <div v-if="userAvatar" class="user-avatar">
-          <img :src="userAvatar" alt="User avatar" width="80" height="80" />
+      <h1 class="text-2xl font-bold mb-4 text-teal">Welcome to You're Next Great App{{ user?.user_metadata?.full_name ? ', ' + user.user_metadata.full_name.split(' ')[0] : '' }}!</h1>
+      <p class="text-teal mb-6">{{ message }}</p>
+      <div v-if="user" class="flex bg-mint p-5 rounded-lg mb-8 items-center justify-center">
+        <div v-if="userAvatar" class="w-20 h-20 rounded-full overflow-hidden mr-5">
+          <img :src="userAvatar" alt="User avatar" class="w-full h-full object-cover" />
         </div>
-        <div v-else class="user-avatar placeholder">
+        <div v-else class="w-20 h-20 rounded-full bg-teal text-white flex items-center justify-center text-3xl font-bold mr-5">
           {{ userInitials }}
         </div>
-        <div class="user-details">
-          <p><strong>Email:</strong> {{ user.email }}</p>
-          <p><strong>Provider:</strong> {{ user.app_metadata?.provider || 'Email' }}</p>
-          <p v-if="user.user_metadata?.full_name"><strong>Name:</strong> {{ user.user_metadata.full_name }}</p>
-          <p><strong>Last Sign In:</strong> {{ formatDate(user.last_sign_in_at) }}</p>
+        <div class="text-left">
+          <p class="my-2 text-teal"><strong>Email:</strong> {{ user.email }}</p>
+          <p class="my-2 text-teal"><strong>Provider:</strong> {{ user.app_metadata?.provider || 'Email' }}</p>
+          <p v-if="user.user_metadata?.full_name" class="my-2 text-teal"><strong>Name:</strong> {{ user.user_metadata.full_name }}</p>
+          <p class="my-2 text-teal"><strong>Last Sign In:</strong> {{ formatDate(user.last_sign_in_at) }}</p>
         </div>
       </div>
-      <div v-if="!user" class="debug-info">
-        <p><strong>Debug Info:</strong></p>
-        <p>User object is null or undefined</p>
+      <div v-if="!user" class="bg-sky border border-teal rounded p-3 mb-5 text-left">
+        <p class="font-bold text-teal">Debug Info:</p>
+        <p class="text-teal">User object is null or undefined</p>
       </div>
-      <p class="redirect-message">Redirecting to home page in {{ countdown }} seconds...</p>
-      <AppButton @click="goToHome">Go to Home Now</AppButton>
+      <p class="text-sm text-teal mb-4">Redirecting to home page in {{ countdown }} seconds...</p>
+      <button @click="goToHome" class="btn btn-primary">Go to Home Now</button>
     </div>
   </div>
 </template>
@@ -116,35 +116,7 @@ function goToHome() {
 }
 </script>
 
-<style scoped>
-.success-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #E2E2E2; /* Light gray */
-  padding: 20px;
-}
-
-.success-card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 40px;
-  width: 100%;
-  max-width: 500px;
-  text-align: center;
-}
-
-.success-icon {
-  color: #19747E; /* Deep teal */
-  margin-bottom: 20px;
-}
-
-.checkmark-animation {
-  animation: checkmark 0.8s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-}
-
+<style>
 @keyframes checkmark {
   0% {
     stroke-dashoffset: 100;
@@ -156,75 +128,9 @@ function goToHome() {
   }
 }
 
-.success-icon svg {
+.animate-checkmark {
   stroke-dasharray: 100;
   stroke-dashoffset: 100;
-}
-
-h1 {
-  margin-top: 0;
-  margin-bottom: 16px;
-  color: #19747E; /* Deep teal */
-}
-
-p {
-  color: #19747E; /* Deep teal */
-  margin-bottom: 24px;
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 30px;
-  padding: 20px;
-  background-color: #D1E8E2; /* Mint green */
-  border-radius: 8px;
-}
-
-.user-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-right: 20px;
-}
-
-.user-avatar.placeholder {
-  background-color: #19747E; /* Deep teal */
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.user-details {
-  text-align: left;
-}
-
-.user-details p {
-  margin: 8px 0;
-}
-
-.redirect-message {
-  font-size: 14px;
-  color: #19747E; /* Deep teal */
-  margin-bottom: 16px;
-}
-
-.debug-info {
-  background-color: #A9D6E5; /* Light sky blue */
-  border: 1px solid #19747E; /* Deep teal */
-  border-radius: 4px;
-  padding: 12px;
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-.debug-info p {
-  margin: 4px 0;
-  color: #19747E; /* Deep teal */
+  animation: checkmark 0.8s cubic-bezier(0.65, 0, 0.45, 1) forwards;
 }
 </style> 

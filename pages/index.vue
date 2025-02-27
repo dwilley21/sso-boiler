@@ -1,25 +1,25 @@
 <template>
-  <div class="home-container">
-    <div v-if="user" class="welcome-card">
-      <div class="mint-welcome">
-        <h1>Welcome to You're Next Great App</h1>
-        <p class="welcome-message">We're glad to have you here, {{ user.user_metadata?.full_name || user.email || 'User' }}!</p>
+  <div class="flex justify-center items-center min-h-screen bg-lightgray p-5">
+    <div v-if="user" class="bg-white rounded-lg shadow-md p-10 w-full max-w-2xl">
+      <div class="bg-gradient-to-br from-mint to-sky text-teal p-8 rounded-lg text-center mb-8 shadow">
+        <h1 class="text-3xl font-bold mb-4 text-teal">Welcome to You're Next Great App</h1>
+        <p class="text-lg text-teal">We're glad to have you here, {{ user.user_metadata?.full_name || user.email || 'User' }}!</p>
       </div>
-      <div class="user-info-section">
-        <h2>Your Profile</h2>
-        <div class="user-info">
+      <div class="mt-8">
+        <h2 class="text-xl font-semibold text-teal text-center mb-5">Your Profile</h2>
+        <div class="flex bg-mint p-5 rounded-lg mb-8">
           <UserAvatar :user="user" :size="80" />
-          <div class="user-details">
-            <p><strong>Email:</strong> {{ user.email }}</p>
-            <p><strong>Provider:</strong> {{ user.app_metadata?.provider || 'Email' }}</p>
-            <p v-if="user.user_metadata?.full_name"><strong>Name:</strong> {{ user.user_metadata.full_name }}</p>
-            <p><strong>Last Sign In:</strong> {{ formatDate(user.last_sign_in_at) }}</p>
+          <div class="flex-1 ml-5">
+            <p class="my-2 text-teal"><strong>Email:</strong> {{ user.email }}</p>
+            <p class="my-2 text-teal"><strong>Provider:</strong> {{ user.app_metadata?.provider || 'Email' }}</p>
+            <p v-if="user.user_metadata?.full_name" class="my-2 text-teal"><strong>Name:</strong> {{ user.user_metadata.full_name }}</p>
+            <p class="my-2 text-teal"><strong>Last Sign In:</strong> {{ formatDate(user.last_sign_in_at) }}</p>
           </div>
         </div>
-        <AppButton @click="handleSignOut">Sign Out</AppButton>
+        <button @click="handleSignOut" class="btn btn-primary">Sign Out</button>
       </div>
     </div>
-    <div v-else class="loading">
+    <div v-else class="w-full max-w-2xl">
       <LoadingSpinner :size="50" message="Loading user information..." :centered="true" />
     </div>
   </div>

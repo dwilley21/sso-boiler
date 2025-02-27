@@ -1,48 +1,56 @@
 <template>
-  <div class="login-container">
-    <div class="login-card">
-      <h1>Sign In to You're Next Great App</h1>
-      <p v-if="error" class="error">{{ error }}</p>
+  <div class="flex justify-center items-center min-h-screen bg-lightgray p-5">
+    <div class="bg-white rounded-lg shadow-md p-10 w-full max-w-md">
+      <h1 class="text-2xl font-bold mb-6 text-teal text-center">Sign In to You're Next Great App</h1>
+      <p v-if="error" class="text-red-600 mb-4 text-center text-sm">{{ error }}</p>
       
       <form @submit.prevent="handleEmailLogin">
-        <div class="form-group">
-          <label for="email">Email</label>
+        <div class="mb-5">
+          <label for="email" class="form-label">Email</label>
           <input 
             id="email"
             v-model="email" 
             type="email" 
             placeholder="your@email.com" 
+            class="form-input"
             required
           />
         </div>
         
-        <div class="form-group">
-          <label for="password">Password</label>
+        <div class="mb-5">
+          <label for="password" class="form-label">Password</label>
           <input 
             id="password"
             v-model="password" 
             type="password" 
             placeholder="••••••••" 
+            class="form-input"
             required
           />
         </div>
         
-        <AppButton 
+        <button 
           type="submit" 
-          :loading="loading"
+          class="btn btn-primary"
+          :disabled="loading"
         >
-          Sign in with Email
-        </AppButton>
+          <span v-if="loading" class="absolute inset-0 flex items-center justify-center">
+            <span class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+          </span>
+          <span :class="{ 'invisible': loading }">Sign in with Email</span>
+        </button>
       </form>
       
-      <div class="divider">
-        <span>OR</span>
+      <div class="flex items-center my-6">
+        <div class="flex-1 border-b border-mint"></div>
+        <span class="px-3 text-teal text-sm">OR</span>
+        <div class="flex-1 border-b border-mint"></div>
       </div>
       
       <GoogleSignInButton @error="handleGoogleError" />
       
-      <p class="signup-link">
-        Don't have an account? <NuxtLink to="/register">Sign up</NuxtLink>
+      <p class="mt-6 text-center text-sm text-teal">
+        Don't have an account? <NuxtLink to="/register" class="text-teal font-bold no-underline hover:underline">Sign up</NuxtLink>
       </p>
     </div>
   </div>

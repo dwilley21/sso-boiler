@@ -1,15 +1,17 @@
 <template>
   <button 
     :class="[
-      'app-button', 
-      `app-button--${variant}`,
-      { 'app-button--loading': loading }
+      'btn',
+      `btn-${variant}`,
+      { 'relative': loading }
     ]" 
     :disabled="disabled || loading"
     @click="$emit('click')"
   >
-    <span v-if="loading" class="app-button__loader"></span>
-    <span v-else class="app-button__content">
+    <span v-if="loading" class="absolute inset-0 flex items-center justify-center">
+      <span class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+    </span>
+    <span :class="{ 'invisible': loading }" class="inline-block">
       <slot></slot>
     </span>
   </button>
