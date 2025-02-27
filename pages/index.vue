@@ -1,17 +1,23 @@
 <template>
   <div class="home-container">
     <div v-if="user" class="welcome-card">
-      <h1>Welcome, {{ user.email || 'User' }}!</h1>
-      <div class="user-info">
-        <UserAvatar :user="user" :size="80" />
-        <div class="user-details">
-          <p><strong>User ID:</strong> {{ user.id }}</p>
-          <p><strong>Email:</strong> {{ user.email }}</p>
-          <p><strong>Provider:</strong> {{ user.app_metadata?.provider || 'Email' }}</p>
-          <p><strong>Last Sign In:</strong> {{ formatDate(user.last_sign_in_at) }}</p>
-        </div>
+      <div class="grayscale-welcome">
+        <h1>Welcome to the App</h1>
+        <p class="welcome-message">We're glad to have you here, {{ user.user_metadata?.full_name || user.email || 'User' }}!</p>
       </div>
-      <AppButton @click="handleSignOut">Sign Out</AppButton>
+      <div class="user-info-section">
+        <h2>Your Profile</h2>
+        <div class="user-info">
+          <UserAvatar :user="user" :size="80" />
+          <div class="user-details">
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Provider:</strong> {{ user.app_metadata?.provider || 'Email' }}</p>
+            <p v-if="user.user_metadata?.full_name"><strong>Name:</strong> {{ user.user_metadata.full_name }}</p>
+            <p><strong>Last Sign In:</strong> {{ formatDate(user.last_sign_in_at) }}</p>
+          </div>
+        </div>
+        <AppButton @click="handleSignOut">Sign Out</AppButton>
+      </div>
     </div>
     <div v-else class="loading">
       <LoadingSpinner :size="50" message="Loading user information..." :centered="true" />
@@ -67,10 +73,35 @@ async function handleSignOut() {
   max-width: 600px;
 }
 
-h1 {
+.grayscale-welcome {
+  background: linear-gradient(to bottom right, #333333, #555555);
+  color: white;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.grayscale-welcome h1 {
   margin-top: 0;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+  color: white;
+}
+
+.welcome-message {
+  font-size: 18px;
+  margin-bottom: 0;
+  color: #e0e0e0;
+}
+
+.user-info-section {
+  margin-top: 30px;
+}
+
+h2 {
   color: #333;
+  margin-bottom: 20px;
   text-align: center;
 }
 
