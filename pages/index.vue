@@ -3,7 +3,7 @@
     <!-- Content for signed-in users -->
     <div v-if="user" class="bg-white rounded-lg shadow-md p-10 w-full max-w-2xl">
       <div class="bg-gradient-to-br from-mint to-sky text-teal p-8 rounded-lg text-center mb-8 shadow">
-        <h1 class="text-3xl font-bold mb-4 text-teal">Welcome to You're Next Great App</h1>
+        <h1 class="text-3xl font-bold mb-4 text-teal">Welcome to Your Next Great App</h1>
         <p class="text-lg text-teal">We're glad to have you here, {{ user.user_metadata?.full_name || user.email || 'User' }}!</p>
       </div>
       <div class="mt-8">
@@ -30,7 +30,7 @@
     <div v-else class="w-full max-w-5xl">
       <div class="bg-white rounded-lg shadow-lg overflow-hidden">
         <div class="bg-gradient-to-br from-teal to-sky p-12 text-white text-center">
-          <h1 class="text-4xl font-bold mb-4">Welcome to You're Next Great App</h1>
+          <h1 class="text-4xl font-bold mb-4">Welcome to Your Next Great App</h1>
           <p class="text-xl mb-8">The easiest way to start your next project with authentication built-in</p>
           
           <!-- Email signup form -->

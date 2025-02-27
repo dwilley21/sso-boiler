@@ -7,7 +7,7 @@
           <polyline points="22 4 12 14.01 9 11.01"></polyline>
         </svg>
       </div>
-      <h1 class="text-2xl font-bold mb-4 text-teal">Welcome to You're Next Great App{{ user?.user_metadata?.full_name ? ', ' + user.user_metadata.full_name.split(' ')[0] : '' }}!</h1>
+      <h1 class="text-2xl font-bold mb-4 text-teal">Welcome to Your Next Great App{{ user?.user_metadata?.full_name ? ', ' + user.user_metadata.full_name.split(' ')[0] : '' }}!</h1>
       <p class="text-teal mb-6">{{ message }}</p>
       <div v-if="user" class="flex bg-mint p-5 rounded-lg mb-8 items-center justify-center">
         <div v-if="userAvatar" class="w-20 h-20 rounded-full overflow-hidden mr-5">

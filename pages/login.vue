@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-center items-center min-h-screen bg-lightgray p-5">
     <div class="bg-white rounded-lg shadow-md p-10 w-full max-w-md">
-      <h1 class="text-2xl font-bold mb-6 text-teal text-center">Sign In to You're Next Great App</h1>
+      <h1 class="text-2xl font-bold mb-6 text-teal text-center">Sign In to Your Next Great App</h1>
       <p v-if="error" class="text-red-600 mb-4 text-center text-sm">{{ error }}</p>
       
       <form @submit.prevent="handleEmailLogin">

@@ -2,7 +2,7 @@
   <div class="flex flex-col min-h-screen">
     <header class="bg-teal text-white py-4">
       <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
-        <h1 class="text-2xl font-normal m-0">You're Next Great App</h1>
+        <h1 class="text-2xl font-normal m-0">Your Next Great App</h1>
         <div class="flex items-center gap-4">
           <template v-if="user">
             <UserAvatar :user="user" :size="32" />
@@ -37,7 +37,7 @@
     </main>
     
     <footer class="bg-lightgray py-4 text-center text-teal">
-      <p>&copy; {{ new Date().getFullYear() }} You're Next Great App</p>
+      <p>&copy; {{ new Date().getFullYear() }} Your Next Great App</p>
       <p class="mt-2 text-sm">
         <NuxtLink to="/debug" class="text-teal no-underline hover:underline">Debug</NuxtLink>
       </p>
