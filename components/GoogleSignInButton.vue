@@ -26,20 +26,11 @@ const router = useRouter()
 const loading = ref(false)
 const config = useRuntimeConfig()
 
-// Log the Supabase configuration for debugging
-console.log('Supabase config:', {
-  url: config.public.supabase.url,
-  keyLength: config.public.supabase.key ? config.public.supabase.key.length : 0
-})
-
 // Create a fresh Supabase client for authentication
 const createFreshClient = () => {
   // Use the anon key directly to avoid any issues with environment variables
   const supabaseUrl = 'https://ftqnnkclmmduoloxewtl.supabase.co'
   const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ0cW5ua2NsbW1kdW9sb3hld3RsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA2MTg4ODksImV4cCI6MjA1NjE5NDg4OX0.zw1-6fYWMIvoBk4ymyrYjC0Iffeiez0HE6WIGVGur5s'
-  
-  console.log('Creating fresh client with direct URL and key')
-  console.log(`Key length: ${supabaseKey.length}`)
   
   return createClient(
     supabaseUrl,
@@ -58,11 +49,9 @@ const createFreshClient = () => {
 async function signInWithGoogle() {
   try {
     loading.value = true
-    console.log('Starting Google sign-in process')
     
     // Create a fresh client for this authentication attempt
     const freshClient = createFreshClient()
-    console.log('Created fresh Supabase client')
     
     // Generate a code verifier (random string)
     const generateCodeVerifier = () => {
@@ -85,7 +74,6 @@ async function signInWithGoogle() {
     
     // Generate and store code verifier
     const codeVerifier = generateCodeVerifier()
-    console.log('Generated code verifier:', codeVerifier.substring(0, 10) + '...')
     
     // Clear any existing code verifiers to avoid conflicts
     localStorage.removeItem('pkce_code_verifier')
@@ -93,25 +81,20 @@ async function signInWithGoogle() {
     sessionStorage.removeItem('pkce_code_verifier')
     sessionStorage.removeItem('supabase.auth.code_verifier')
     
-    // Store in localStorage for the confirm page to use - without quotes
+    // Store in localStorage for the confirm page to use
     localStorage.setItem('pkce_code_verifier', codeVerifier)
-    console.log('Stored code verifier in localStorage as pkce_code_verifier')
-
-    // Also store in sessionStorage as a backup - without quotes
+    
+    // Also store in sessionStorage as a backup
     sessionStorage.setItem('pkce_code_verifier', codeVerifier)
-    console.log('Stored code verifier in sessionStorage as pkce_code_verifier')
-
-    // Store in the standard Supabase location as well - without quotes
+    
+    // Store in the standard Supabase location as well
     localStorage.setItem('supabase.auth.code_verifier', codeVerifier)
-    console.log('Stored code verifier in localStorage as supabase.auth.code_verifier')
     
     // Generate code challenge
     const codeChallenge = await generateCodeChallenge(codeVerifier)
-    console.log('Generated code challenge:', codeChallenge.substring(0, 10) + '...')
     
     // Get the redirect URL
     const redirectUrl = `${window.location.origin}/confirm`
-    console.log('Redirect URL:', redirectUrl)
     
     // Use the Supabase client to sign in with Google
     const { data, error } = await freshClient.auth.signInWithOAuth({
@@ -130,8 +113,6 @@ async function signInWithGoogle() {
       console.error('Error starting OAuth flow:', error.message)
       throw error
     }
-    
-    console.log('OAuth flow started successfully')
   } catch (err) {
     console.error('Exception during Google sign-in:', err.message)
     alert('Failed to sign in with Google. Please try again.')

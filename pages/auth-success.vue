@@ -71,14 +71,9 @@ function formatDate(dateString) {
 
 // If user is not authenticated, redirect to login
 onMounted(async () => {
-  console.log('Auth Success Page Mounted')
-  console.log('Current user:', user.value)
-  
   // Check session directly
   try {
     const { data, error } = await client.auth.getSession()
-    console.log('Session data:', data)
-    console.log('Session error:', error)
     
     if (error) {
       console.error('Error getting session:', error)
@@ -88,17 +83,12 @@ onMounted(async () => {
   }
   
   if (!user.value) {
-    console.warn('No user found in auth-success page, will redirect to login')
     message.value = 'Authentication incomplete. Redirecting to login...'
     setTimeout(() => {
       router.push('/login')
     }, 3000)
     return
   }
-  
-  console.log('User authenticated:', user.value)
-  console.log('User metadata:', user.value.user_metadata)
-  console.log('App metadata:', user.value.app_metadata)
   
   // Check if there's a custom message in the query params
   if (route.query.message) {
