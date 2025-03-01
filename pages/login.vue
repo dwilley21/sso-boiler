@@ -1,7 +1,7 @@
 <template>
-  <div class="flex justify-center items-center min-h-screen bg-lightgray p-5">
-    <div class="bg-white rounded-lg shadow-md p-10 w-full max-w-md">
-      <h1 class="text-2xl font-bold mb-6 text-teal text-center">Sign In to Your Next Great App</h1>
+  <div class="flex justify-center items-center min-h-screen bg-cream p-5">
+    <div class="bg-offwhite rounded-lg shadow-md p-10 w-full max-w-md">
+      <h1 class="text-2xl font-bold mb-6 text-brown text-center">Sign In to Your Next Great App</h1>
       <p v-if="error" class="text-red-600 mb-4 text-center text-sm">{{ error }}</p>
       
       <form @submit.prevent="handleEmailLogin">
@@ -35,22 +35,22 @@
           :disabled="loading"
         >
           <span v-if="loading" class="absolute inset-0 flex items-center justify-center">
-            <span class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+            <span class="w-5 h-5 border-2 border-offwhite/30 border-t-offwhite rounded-full animate-spin"></span>
           </span>
           <span :class="{ 'invisible': loading }">Sign in with Email</span>
         </button>
       </form>
       
       <div class="flex items-center my-6">
-        <div class="flex-1 border-b border-mint"></div>
-        <span class="px-3 text-teal text-sm">OR</span>
-        <div class="flex-1 border-b border-mint"></div>
+        <div class="flex-1 border-b border-taupe"></div>
+        <span class="px-3 text-brown text-sm">OR</span>
+        <div class="flex-1 border-b border-taupe"></div>
       </div>
       
       <GoogleSignInButton @error="handleGoogleError" />
       
-      <p class="mt-6 text-center text-sm text-teal">
-        Don't have an account? <NuxtLink to="/register" class="text-teal font-bold no-underline hover:underline">Sign up</NuxtLink>
+      <p class="mt-6 text-center text-sm text-brown">
+        Don't have an account? <NuxtLink to="/register" class="text-brown font-bold no-underline hover:underline">Sign up</NuxtLink>
       </p>
     </div>
   </div>
