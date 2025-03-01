@@ -4,7 +4,7 @@
 
 @layer base {
   html, body {
-    @apply font-sans text-brown;
+    @apply font-sans text-teal;
   }
 }
 
@@ -14,26 +14,26 @@
   }
   
   .btn-primary {
-    @apply bg-brown text-offwhite hover:bg-brown-light disabled:opacity-70 disabled:cursor-not-allowed;
+    @apply bg-teal text-white hover:bg-teal-dark disabled:opacity-70 disabled:cursor-not-allowed;
   }
   
   .btn-secondary {
-    @apply bg-taupe text-brown hover:bg-taupe-light disabled:opacity-70 disabled:cursor-not-allowed;
+    @apply bg-sky text-teal hover:bg-sky-dark disabled:opacity-70 disabled:cursor-not-allowed;
   }
   
   .btn-outline {
-    @apply bg-transparent text-brown border border-taupe hover:bg-taupe/10 disabled:opacity-70 disabled:cursor-not-allowed;
+    @apply bg-transparent text-teal border border-teal hover:bg-teal/5 disabled:opacity-70 disabled:cursor-not-allowed;
   }
   
   .card {
-    @apply bg-offwhite rounded-lg shadow-md p-10;
+    @apply bg-white rounded-lg shadow-md p-10;
   }
   
   .form-input {
-    @apply w-full py-3 px-4 border border-taupe rounded text-base transition-colors focus:border-brown focus:outline-none;
+    @apply w-full py-3 px-4 border border-mint rounded text-base transition-colors focus:border-teal focus:outline-none;
   }
   
   .form-label {
-    @apply block mb-2 font-medium text-brown;
+    @apply block mb-2 font-medium text-teal;
   }
 } 

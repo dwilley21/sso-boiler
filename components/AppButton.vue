@@ -9,7 +9,7 @@
     @click="$emit('click')"
   >
     <span v-if="loading" class="absolute inset-0 flex items-center justify-center">
-      <span class="w-5 h-5 border-2 border-offwhite/30 border-t-offwhite rounded-full animate-spin"></span>
+      <span class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
     </span>
     <span :class="{ 'invisible': loading }" class="inline-block">
       <slot></slot>
@@ -60,44 +60,44 @@ defineEmits(['click'])
 }
 
 .app-button--primary {
-  background-color: #544235; /* Brown */
-  color: #FBF8F5; /* Offwhite */
+  background-color: #19747E; /* Deep teal */
+  color: white;
 }
 
 .app-button--primary:hover:not(:disabled) {
-  background-color: #6A5445; /* Lighter brown */
+  background-color: #156570; /* Darker deep teal */
 }
 
 .app-button--secondary {
-  background-color: #B8A695; /* Taupe */
-  color: #544235; /* Brown */
+  background-color: #A9D6E5; /* Light sky blue */
+  color: #19747E; /* Deep teal */
 }
 
 .app-button--secondary:hover:not(:disabled) {
-  background-color: #C9BDB0; /* Lighter taupe */
+  background-color: #8ec7d9; /* Darker light sky blue */
 }
 
 .app-button--outline {
   background-color: transparent;
-  color: #544235; /* Brown */
-  border: 1px solid #B8A695; /* Taupe */
+  color: #19747E; /* Deep teal */
+  border: 1px solid #19747E; /* Deep teal */
 }
 
 .app-button--outline:hover:not(:disabled) {
-  background-color: rgba(184, 166, 149, 0.1); /* Taupe with transparency */
+  background-color: rgba(25, 116, 126, 0.05); /* Deep teal with transparency */
 }
 
 .app-button--google {
-  background-color: #FBF8F5; /* Offwhite */
-  color: #544235; /* Brown */
-  border: 1px solid #B8A695; /* Taupe */
+  background-color: white;
+  color: #333;
+  border: 1px solid #ddd;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .app-button--google:hover:not(:disabled) {
-  background-color: #F0EDE9; /* Darker offwhite */
+  background-color: #f8f8f8;
 }
 
 .app-button--loading .app-button__content {
@@ -108,16 +108,16 @@ defineEmits(['click'])
   position: absolute;
   width: 1.25rem;
   height: 1.25rem;
-  border: 2px solid rgba(251, 248, 245, 0.3); /* Offwhite with transparency */
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  border-top-color: #FBF8F5; /* Offwhite */
+  border-top-color: white;
   animation: spin 0.8s linear infinite;
 }
 
 .app-button--outline .app-button__loader,
 .app-button--google .app-button__loader {
-  border: 2px solid rgba(84, 66, 53, 0.3); /* Brown with transparency */
-  border-top-color: #544235; /* Brown */
+  border: 2px solid rgba(25, 116, 126, 0.3); /* Deep teal with transparency */
+  border-top-color: #19747E; /* Deep teal */
 }
 
 @keyframes spin {

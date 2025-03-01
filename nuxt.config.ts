@@ -14,12 +14,12 @@ export default defineNuxtConfig({
     head: {
       script: [
         {
-          src: '/cookie-fix.js',
+          src: '/cookie-shim.js',
           type: 'text/javascript',
           async: false,
           defer: false,
-          hid: 'cookie-fix',
-          key: 'cookie-fix'
+          hid: 'cookie-shim',
+          key: 'cookie-shim'
         }
       ]
     }
@@ -78,7 +78,7 @@ export default defineNuxtConfig({
       dedupe: ['vue'],
       alias: {
         // Fix the path to the cookie module - use our shim instead
-        'cookie': resolve(process.cwd(), './public/cookie-fix.js')
+        'cookie': resolve(process.cwd(), './public/cookie-shim.js')
       }
     },
     build: {

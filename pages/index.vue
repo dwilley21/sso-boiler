@@ -1,20 +1,20 @@
 <template>
-  <div class="flex justify-center items-center min-h-screen bg-cream p-5">
+  <div class="flex justify-center items-center min-h-screen bg-lightgray p-5">
     <!-- Content for signed-in users -->
-    <div v-if="user" class="bg-offwhite rounded-lg shadow-md p-10 w-full max-w-2xl">
-      <div class="bg-gradient-to-br from-taupe to-taupe-light text-brown p-8 rounded-lg text-center mb-8 shadow">
-        <h1 class="text-3xl font-bold mb-4 text-brown">Welcome to Your Next Great App</h1>
-        <p class="text-lg text-brown">We're glad to have you here, {{ user.user_metadata?.full_name || user.email || 'User' }}!</p>
+    <div v-if="user" class="bg-white rounded-lg shadow-md p-10 w-full max-w-2xl">
+      <div class="bg-gradient-to-br from-mint to-sky text-teal p-8 rounded-lg text-center mb-8 shadow">
+        <h1 class="text-3xl font-bold mb-4 text-teal">Welcome to Your Next Great App</h1>
+        <p class="text-lg text-teal">We're glad to have you here, {{ user.user_metadata?.full_name || user.email || 'User' }}!</p>
       </div>
       <div class="mt-8">
-        <h2 class="text-xl font-semibold text-brown text-center mb-5">Your Profile</h2>
-        <div class="flex bg-sand p-5 rounded-lg mb-8">
+        <h2 class="text-xl font-semibold text-teal text-center mb-5">Your Profile</h2>
+        <div class="flex bg-mint p-5 rounded-lg mb-8">
           <UserAvatar :user="user" :size="80" />
           <div class="flex-1 ml-5">
-            <p class="my-2 text-brown"><strong>Email:</strong> {{ user.email }}</p>
-            <p class="my-2 text-brown"><strong>Provider:</strong> {{ user.app_metadata?.provider || 'Email' }}</p>
-            <p v-if="user.user_metadata?.full_name" class="my-2 text-brown"><strong>Name:</strong> {{ user.user_metadata.full_name }}</p>
-            <p class="my-2 text-brown"><strong>Last Sign In:</strong> {{ formatDate(user.last_sign_in_at) }}</p>
+            <p class="my-2 text-teal"><strong>Email:</strong> {{ user.email }}</p>
+            <p class="my-2 text-teal"><strong>Provider:</strong> {{ user.app_metadata?.provider || 'Email' }}</p>
+            <p v-if="user.user_metadata?.full_name" class="my-2 text-teal"><strong>Name:</strong> {{ user.user_metadata.full_name }}</p>
+            <p class="my-2 text-teal"><strong>Last Sign In:</strong> {{ formatDate(user.last_sign_in_at) }}</p>
           </div>
         </div>
         <button @click="handleSignOut" class="btn btn-primary">Sign Out</button>
@@ -28,8 +28,8 @@
     
     <!-- Landing page for non-signed-in users -->
     <div v-else class="w-full max-w-5xl">
-      <div class="bg-offwhite rounded-lg shadow-lg overflow-hidden">
-        <div class="bg-gradient-to-br from-brown to-brown-light p-12 text-offwhite text-center">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="bg-gradient-to-br from-teal to-sky p-12 text-white text-center">
           <h1 class="text-4xl font-bold mb-4">Welcome to Your Next Great App</h1>
           <p class="text-xl mb-8">The easiest way to start your next project with authentication built-in</p>
           
@@ -40,52 +40,52 @@
                 v-model="signupEmail" 
                 type="email" 
                 placeholder="Enter your email" 
-                class="flex-1 py-3 px-4 rounded-lg text-brown focus:outline-none"
+                class="flex-1 py-3 px-4 rounded-lg text-teal focus:outline-none"
                 required
               />
               <button 
                 type="submit" 
-                class="bg-taupe text-brown hover:bg-taupe-light py-3 px-6 rounded-lg font-medium transition-colors"
+                class="bg-mint text-teal hover:bg-mint/90 py-3 px-6 rounded-lg font-medium transition-colors"
                 :disabled="signupLoading"
               >
-                <span v-if="signupLoading" class="inline-block w-5 h-5 border-2 border-brown/30 border-t-brown rounded-full animate-spin mr-2"></span>
+                <span v-if="signupLoading" class="inline-block w-5 h-5 border-2 border-teal/30 border-t-teal rounded-full animate-spin mr-2"></span>
                 Get Started
               </button>
             </div>
-            <p v-if="signupError" class="mt-3 text-offwhite bg-red-500/20 p-2 rounded text-sm">{{ signupError }}</p>
-            <p v-if="signupSuccess" class="mt-3 text-offwhite bg-green-500/20 p-2 rounded text-sm">{{ signupSuccess }}</p>
+            <p v-if="signupError" class="mt-3 text-white bg-red-500/20 p-2 rounded text-sm">{{ signupError }}</p>
+            <p v-if="signupSuccess" class="mt-3 text-white bg-green-500/20 p-2 rounded text-sm">{{ signupSuccess }}</p>
           </form>
         </div>
         
         <div class="p-10">
-          <h2 class="text-2xl font-bold text-brown text-center mb-8">Features</h2>
+          <h2 class="text-2xl font-bold text-teal text-center mb-8">Features</h2>
           
           <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-sand/20 p-6 rounded-lg">
-              <div class="text-brown mb-4 flex justify-center">
+            <div class="bg-mint/20 p-6 rounded-lg">
+              <div class="text-teal mb-4 flex justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                   <polyline points="22 4 12 14.01 9 11.01"></polyline>
                 </svg>
               </div>
-              <h3 class="text-lg font-semibold text-brown text-center mb-2">Authentication Ready</h3>
-              <p class="text-brown text-center">Built-in authentication with email and social providers</p>
+              <h3 class="text-lg font-semibold text-teal text-center mb-2">Authentication Ready</h3>
+              <p class="text-teal text-center">Built-in authentication with email and social providers</p>
             </div>
             
-            <div class="bg-sand/20 p-6 rounded-lg">
-              <div class="text-brown mb-4 flex justify-center">
+            <div class="bg-mint/20 p-6 rounded-lg">
+              <div class="text-teal mb-4 flex justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
                   <path d="M2 17l10 5 10-5"></path>
                   <path d="M2 12l10 5 10-5"></path>
                 </svg>
               </div>
-              <h3 class="text-lg font-semibold text-brown text-center mb-2">Modern Stack</h3>
-              <p class="text-brown text-center">Built with Vue 3, Nuxt, and Tailwind CSS</p>
+              <h3 class="text-lg font-semibold text-teal text-center mb-2">Modern Stack</h3>
+              <p class="text-teal text-center">Built with Vue 3, Nuxt, and Tailwind CSS</p>
             </div>
             
-            <div class="bg-sand/20 p-6 rounded-lg">
-              <div class="text-brown mb-4 flex justify-center">
+            <div class="bg-mint/20 p-6 rounded-lg">
+              <div class="text-teal mb-4 flex justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                   <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
@@ -95,13 +95,13 @@
                   <line x1="12" y1="22.08" x2="12" y2="12"></line>
                 </svg>
               </div>
-              <h3 class="text-lg font-semibold text-brown text-center mb-2">Ready to Scale</h3>
-              <p class="text-brown text-center">Designed to grow with your project needs</p>
+              <h3 class="text-lg font-semibold text-teal text-center mb-2">Ready to Scale</h3>
+              <p class="text-teal text-center">Designed to grow with your project needs</p>
             </div>
           </div>
           
           <div class="mt-10 text-center">
-            <p class="text-brown mb-4">Already have an account?</p>
+            <p class="text-teal mb-4">Already have an account?</p>
             <NuxtLink to="/login" class="btn btn-outline inline-block max-w-xs">
               Sign In to Your Account
             </NuxtLink>

@@ -1,8 +1,8 @@
 <template>
   <div :class="['flex flex-col items-center', { 'justify-center min-h-[200px]': centered }]">
     <div 
-      class="border-4 border-sand rounded-full animate-spin"
-      :class="{ 'border-t-brown': true }"
+      class="border-4 border-gray-200 rounded-full animate-spin"
+      :class="{ 'border-t-teal': true }"
       :style="{ 
         width: `${size}px`, 
         height: `${size}px`,
@@ -10,7 +10,7 @@
         borderWidth: `${size / 10}px`
       }"
     ></div>
-    <p v-if="message" class="mt-4 text-brown text-center">{{ message }}</p>
+    <p v-if="message" class="mt-4 text-teal text-center">{{ message }}</p>
   </div>
 </template>
 
@@ -44,15 +44,15 @@ defineProps({
 }
 
 .loading-spinner {
-  border: 5px solid #E5D9C9; /* sand color */
+  border: 5px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 5px solid #544235; /* brown color */
+  border-top: 5px solid #4f46e5;
   animation: spin 1s linear infinite;
 }
 
 .loading-message {
   margin-top: 16px;
-  color: #544235; /* brown color */
+  color: #555;
   text-align: center;
 }
 

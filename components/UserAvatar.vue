@@ -12,7 +12,7 @@
     />
     <div 
       v-else 
-      class="rounded-full text-offwhite flex items-center justify-center font-bold"
+      class="rounded-full text-white flex items-center justify-center font-bold"
       :style="{ 
         backgroundColor: bgColor,
         width: `${size}px`,
@@ -41,7 +41,7 @@ const props = defineProps({
   },
   bgColor: {
     type: String,
-    default: '#544235' // Brown color
+    default: '#19747E' // Deep teal
   }
 })
 
@@ -77,7 +77,7 @@ const initials = computed(() => {
   width: v-bind('`${props.size}px`');
   height: v-bind('`${props.size}px`');
   border-radius: 50%;
-  color: #FBF8F5; /* offwhite color */
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;

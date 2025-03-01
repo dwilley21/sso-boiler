@@ -1,7 +1,7 @@
 <template>
   <button 
     @click="signInWithGoogle" 
-    class="flex items-center justify-center gap-3 bg-offwhite text-brown border border-taupe rounded px-4 py-2.5 text-sm font-medium transition-all hover:bg-sand/20 hover:shadow-sm w-full max-w-[240px] h-10 mx-auto disabled:opacity-70 disabled:cursor-not-allowed"
+    class="flex items-center justify-center gap-3 bg-white text-gray-600 border border-gray-300 rounded px-4 py-2.5 text-sm font-medium transition-all hover:bg-gray-50 hover:shadow-sm w-full max-w-[240px] h-10 mx-auto disabled:opacity-70 disabled:cursor-not-allowed"
     :disabled="loading"
   >
     <svg v-if="!loading" class="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
